@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Couriers</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="naviagtion_drawer_close">close</string>
 </resources>

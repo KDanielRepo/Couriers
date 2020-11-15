@@ -4,28 +4,27 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 public class Test extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_activity);
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(this);
+        setContentView(R.layout.package_drawer_layout);
+        /*Button button = findViewById(R.id.button);
+        button.setOnClickListener(this);*/
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     public void onClick(View v) {
         if (v.getId() == R.id.button) {
-            AsyncTask asyncTask = new AsyncTask() {
+            DatabaseConnect dbc = new DatabaseConnect();
+            dbc.execute();
+            /*AsyncTask asyncTask = new AsyncTask() {
                 @Override
                 protected Object doInBackground(Object[] objects) {
                     OkHttpClient client = new OkHttpClient();
@@ -36,11 +35,11 @@ public class Test extends AppCompatActivity implements View.OnClickListener {
                     Response response = null;
                     try {
                         response = client.newCall(request).execute();
-                        /*Headers responseHeaders = response.headers();
+                        *//*Headers responseHeaders = response.headers();
                         for (int i = 0, size = responseHeaders.size(); i < size; i++) {
                             System.out.println(responseHeaders.name(i) + ": " + responseHeaders.value(i));
                         }
-                        System.out.println("jestem tu");*/
+                        System.out.println("jestem tu");*//*
                         System.out.println(response.body().string());
                         return response.body().toString();
                     } catch (Exception e) {
@@ -53,7 +52,7 @@ public class Test extends AppCompatActivity implements View.OnClickListener {
                 protected void onPostExecute(Object o) {
                     super.onPostExecute(o);
                 }
-            }.execute();
+            }.execute();*/
         }
     }
 }
